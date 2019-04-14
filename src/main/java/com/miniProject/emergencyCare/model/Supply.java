@@ -1,4 +1,4 @@
-package com.miniProject.emergencyCare.modelo;
+package com.miniProject.emergencyCare.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,17 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Data
 public class Supply {
 	
@@ -30,8 +33,9 @@ public class Supply {
 	@ManyToOne
 	private Medicine medicine;
 	
-	@Min(value=0L, message="The quantity must be positive")
-	private Integer cantidad;
+	@NotNull
+	@Min(value=1L, message="The quantity must be positive")
+	private Integer amount;
 	
 	@ManyToOne
 	private Patient patient;
@@ -48,6 +52,7 @@ public class Supply {
 	private String observation;
 	
 	@NonNull
+	@NotBlank
 	private String pathology;
 	
 }

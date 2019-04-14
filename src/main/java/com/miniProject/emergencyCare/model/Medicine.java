@@ -1,4 +1,4 @@
-package com.miniProject.emergencyCare.modelo;
+package com.miniProject.emergencyCare.model;
 
 import java.util.List;
 
@@ -10,11 +10,13 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Data
 public class Medicine {
 	

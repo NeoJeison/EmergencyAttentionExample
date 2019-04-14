@@ -1,8 +1,8 @@
-package com.miniProject.emergencyCare.repositorios;
+package com.miniProject.emergencyCare.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.miniProject.emergencyCare.modelo.Medicine;
+import com.miniProject.emergencyCare.model.Medicine;
 
 public interface MedicineRepository extends CrudRepository<Medicine, Long>{
 	

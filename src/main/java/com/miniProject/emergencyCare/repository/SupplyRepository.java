@@ -1,8 +1,8 @@
-package com.miniProject.emergencyCare.repositorios;
+package com.miniProject.emergencyCare.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.miniProject.emergencyCare.modelo.Supply;
+import com.miniProject.emergencyCare.model.Supply;
 
 public interface SupplyRepository extends CrudRepository<Supply, Long>{
 	

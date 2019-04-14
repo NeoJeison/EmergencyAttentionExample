@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Emergency attention</title>
+	</head>
+	<body>
+		<h2>Emergency attention</h2>
+		<div>
+			<form method="post" th:action="@{/attend-patient}" th:object="${attention}">
+				<fieldset>
+					<label for="patient">Patient attended</label>
+					<select id="patient" th:field="*{patient}">
+                        <option th:each="patient : ${patients}"  th:value="${patient.document}" th:text="${patient.name}"></option>
+     				</select>
+     				<span th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}"></span>
+					<br><br>
+					<label for="date">Date of attention</label>
+					<input type="date" id="date" name="date" th:field="*{date}">
+					<span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+					<br><br>
+					<label for="time">Time of attention</label>
+					<input type="time" id="time" name="time" th:field="*{time}">
+					<span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
+					<br><br>
+					<label for="generalDescription">General description</label>
+					<input type="text" id="generalDescription" name="generalDescription" th:field="*{generalDescription}">
+					<span th:if="${#fields.hasErrors('generalDescription')}" th:errors="*{generalDescription}"></span>
+					<br><br>
+					<label for="procedurePerformed">Procedure performed</label>
+					<input type="text" id="procedurePerformed" name="procedurePerformed" th:field="*{procedurePerformed}">
+					<span th:if="${#fields.hasErrors('procedurePerformed')}" th:errors="*{procedurePerformed}"></span>
+					<br><br>
+					<label for="forwarded">Forwarded</label>
+					<select id="forwarded" th:field="*{forwarded}">
+                        <option th:value="TRUE" th:text="Yes"></option>
+                        <option th:value="FALSE" th:text="No"></option>
+     				</select>
+					<span th:if="${#fields.hasErrors('forwarded')}" th:errors="*{forwarded}"></span>
+					<br><br>
+					<label for="forwardedPlace">Where the patient was transferred from</label>
+					<input type="text" id="forwardedPlace" name="forwardedPlace" th:field="*{forwardedPlace}">
+					<br><br>
+					<label for="observations">Observations</label>
+					<input type="text" id="observations" name="observations" th:field="*{observations}">
+					<span th:if="${#fields.hasErrors('observations')}" th:errors="*{observations}"></span>
+					<br><br>
+					<!-- añadir supply -->
+					<input type="submit" name="action" id="submitButton" th:value="Save">
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

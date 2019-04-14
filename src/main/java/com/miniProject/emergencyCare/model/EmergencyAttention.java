@@ -1,4 +1,4 @@
-package com.miniProject.emergencyCare.modelo;
+package com.miniProject.emergencyCare.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,11 +18,13 @@ import javax.validation.constraints.PastOrPresent;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Data
 public class EmergencyAttention {
 	

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Deliver medicine</title>
+	</head>
+	<body>
+		<h2>Deliver of medicine</h2>
+		<div>
+			<form method="post" th:action="@{/deliver-medicine}" th:object="${supply}">
+				<fieldset>
+					<label for="medicine">Medicine deliver</label>
+					<select id="medicine" th:field="*{medicine}">
+                        <option th:each="medicine : ${medicines}"  th:value="${medicine.consecutive}" th:text="${medicine.name}"></option>
+     				</select>
+     				<span th:if="${#fields.hasErrors('medicine')}" th:errors="*{medicine}"></span>
+     				<br><br>
+					<label for="amount">Amount of medicine</label>
+					<input type="number" id="amount" name="amount" th:field="*{amount}">
+					<span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span>
+					<br><br>
+					<label for="patient">Patient who was given</label>
+					<select id="patient" th:field="*{patient}">
+                        <option th:each="patient : ${patients}"  th:value="${patient.document}" th:text="${patient.name}"></option>
+     				</select>
+     				<span th:if="${#fields.hasErrors('patient')}" th:errors="*{patient}"></span>
+     				<br><br>
+					<label for="date">Date of delivery</label>
+					<input type="date" id="date" name="date" th:field="*{date}">
+					<span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+					<br><br>
+					<label for="time">Time of delivery</label>
+					<input type="time" id="time" name="time" th:field="*{time}">
+					<span th:if="${#fields.hasErrors('time')}" th:errors="*{time}"></span>
+					<br><br>
+					<label for="observation">Observation</label>
+					<input type="text" id="observation" name="observation" th:field="*{observation}">
+					<br><br>
+					<label for="pathology">Pathology</label>
+					<input type="text" id="pathology" name="pathology" th:field="*{pathology}">
+					<span th:if="${#fields.hasErrors('pathology')}" th:errors="*{pathology}"></span>
+					<br><br>
+					<input type="submit" name="action" id="submitButton" th:value="Save"> 
+				</fieldset>
+			</form>
+		</div>
+	</body>
+</html>

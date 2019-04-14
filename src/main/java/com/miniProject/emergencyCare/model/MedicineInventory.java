@@ -1,4 +1,4 @@
-package com.miniProject.emergencyCare.modelo;
+package com.miniProject.emergencyCare.model;
 
 import java.time.LocalDate;
 
@@ -15,11 +15,13 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Data
 public class MedicineInventory {
 	
@@ -30,6 +32,7 @@ public class MedicineInventory {
 	@ManyToOne
 	private Medicine medicine;
 	
+	@NonNull
 	@Min(value=0L, message="The quantity must be positive")
 	private Integer quantityAvailable;
 	
