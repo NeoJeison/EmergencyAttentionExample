@@ -9,6 +9,7 @@
 		<div>
 			<form method="post" th:action="@{/deliver-medicine}" th:object="${supply}">
 				<fieldset>
+					<input hidden id="idAttention" th:name="idAttention" th:value="${idAttention}"> 
 					<label for="medicine">Medicine deliver</label>
 					<select id="medicine" th:field="*{medicine}">
                         <option th:each="medicine : ${medicines}"  th:value="${medicine.consecutive}" th:text="${medicine.name}"></option>

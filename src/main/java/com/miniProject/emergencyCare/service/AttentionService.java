@@ -21,5 +21,9 @@ public interface AttentionService extends UserDetailsService{
 	public Iterable<Medicine> getAllMedicines();
 	
 	public Iterable<Patient> getAllPatients();
+	
+	public EmergencyAttention getAttentionById(Long id);
+	
+	public Supply getSupplyById(Long id);
 
 }

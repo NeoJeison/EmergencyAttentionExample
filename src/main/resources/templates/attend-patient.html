@@ -9,6 +9,7 @@
 		<div>
 			<form method="post" th:action="@{/attend-patient}" th:object="${attention}">
 				<fieldset>
+					<input hidden id="consecutive" name="consecutive" th:field="*{consecutive}"> 
 					<label for="patient">Patient attended</label>
 					<select id="patient" th:field="*{patient}">
                         <option th:each="patient : ${patients}"  th:value="${patient.document}" th:text="${patient.name}"></option>
@@ -45,7 +46,7 @@
 					<input type="text" id="observations" name="observations" th:field="*{observations}">
 					<span th:if="${#fields.hasErrors('observations')}" th:errors="*{observations}"></span>
 					<br><br>
-					<!-- añadir supply -->
+					<input type="submit" name="action" value="Add supply">
 					<input type="submit" name="action" id="submitButton" th:value="Save">
 				</fieldset>
 			</form>
