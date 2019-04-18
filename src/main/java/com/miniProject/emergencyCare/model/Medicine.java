@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @RequiredArgsConstructor
@@ -43,6 +44,7 @@ public class Medicine {
 	private String indicAndContraindic;
 	
 	@OneToMany
+	@ToString.Exclude
 	private List<MedicineInventory> medicineInventory;
 	
 }

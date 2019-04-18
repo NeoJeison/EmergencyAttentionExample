@@ -98,14 +98,18 @@ public class AttentionServiceImp implements AttentionService {
         //the other one had to stay with the dependency null.
         
         Medicine medicine = new Medicine("Acetaminofen", "Acetaminofen", "JGB", "Oral");
+        medicineRepository.save(medicine);
         
         MedicineInventory medicineInventory1 = new MedicineInventory(12, "Vitrina");
+        medicineInventory1.setMedicine(medicine);
         medicineInventory1.setExpirationDate(LocalDate.of(2020, 2, 15));
         medicineInventoryRepository.save(medicineInventory1);
         MedicineInventory medicineInventory2 = new MedicineInventory(50, "Bodega trasera");
+        medicineInventory2.setMedicine(medicine);
         medicineInventory2.setExpirationDate(LocalDate.of(2019, 11, 15));
         medicineInventoryRepository.save(medicineInventory2);
         MedicineInventory medicineInventory3 = new MedicineInventory(50, "Bodega secundaria");
+        medicineInventory3.setMedicine(medicine);
         medicineInventory3.setExpirationDate(LocalDate.of(2021, 5, 20));
         medicineInventoryRepository.save(medicineInventory3);
         
@@ -120,14 +124,21 @@ public class AttentionServiceImp implements AttentionService {
         medicineInventoryRepository.findById(medicineInventory2.getConsecutive()).get().setMedicine(medicine);
         medicineInventoryRepository.findById(medicineInventory3.getConsecutive()).get().setMedicine(medicine);
         
+        medicineRepository.save(medicine);
+        
         Medicine medicine2 = new Medicine("Diclofenaco", "Diclofenaco", "Genfar", "Intramuscular");
+        medicineRepository.save(medicine2);
+        
         MedicineInventory medicine2Inventory1 = new MedicineInventory(5, "Vitrina");
+        medicine2Inventory1.setMedicine(medicine2);
         medicine2Inventory1.setExpirationDate(LocalDate.of(2020, 2, 15));
         medicineInventoryRepository.save(medicine2Inventory1);
         MedicineInventory medicine2Inventory2 = new MedicineInventory(20, "Bodega trasera");
+        medicine2Inventory2.setMedicine(medicine2);
         medicine2Inventory2.setExpirationDate(LocalDate.of(2019, 10, 15));
         medicineInventoryRepository.save(medicine2Inventory2);
         MedicineInventory medicine2Inventory3 = new MedicineInventory(23, "Bodega secundaria");
+        medicine2Inventory3.setMedicine(medicine2);
         medicine2Inventory3.setExpirationDate(LocalDate.of(2021, 5, 20));
         medicineInventoryRepository.save(medicine2Inventory3);
         medInv = new ArrayList<MedicineInventory>();
@@ -137,15 +148,19 @@ public class AttentionServiceImp implements AttentionService {
         medicine2.setMedicineInventory(medInv);
         medicineRepository.save(medicine2);
         
-        medicineInventoryRepository.findById(medicine2Inventory1.getConsecutive()).get().setMedicine(medicine2);
-        medicineInventoryRepository.findById(medicine2Inventory2.getConsecutive()).get().setMedicine(medicine2);
-        medicineInventoryRepository.findById(medicine2Inventory3.getConsecutive()).get().setMedicine(medicine2);
-        
+//        medicineInventoryRepository.findById(medicine2Inventory1.getConsecutive()).get().setMedicine(medicine2);
+//        medicineInventoryRepository.findById(medicine2Inventory2.getConsecutive()).get().setMedicine(medicine2);
+//        medicineInventoryRepository.findById(medicine2Inventory3.getConsecutive()).get().setMedicine(medicine2);
+                
         Medicine medicine3 = new Medicine("Naproxeno", "Naproxeno", "Genfar", "Oral");
+        medicineRepository.save(medicine3);
+        
         MedicineInventory medicine3Inventory1 = new MedicineInventory(5, "Vitrina");
+        medicine3Inventory1.setMedicine(medicine3);
         medicine3Inventory1.setExpirationDate(LocalDate.of(2020, 2, 15));
         medicineInventoryRepository.save(medicine3Inventory1);
         MedicineInventory medicine3Inventory2 = new MedicineInventory(23, "Bodega secundaria");
+        medicine3Inventory2.setMedicine(medicine3);
         medicine3Inventory2.setExpirationDate(LocalDate.of(2020, 5, 20));
         medicineInventoryRepository.save(medicine3Inventory2);
         medInv = new ArrayList<MedicineInventory>();
@@ -154,9 +169,8 @@ public class AttentionServiceImp implements AttentionService {
         medicine3.setMedicineInventory(medInv);
         medicineRepository.save(medicine3);
         
-        medicineInventoryRepository.findById(medicine3Inventory1.getConsecutive()).get().setMedicine(medicine3);
-        medicineInventoryRepository.findById(medicine3Inventory2.getConsecutive()).get().setMedicine(medicine3);
-        
+//        medicineInventoryRepository.findById(medicine3Inventory1.getConsecutive()).get().setMedicine(medicine3);
+//        medicineInventoryRepository.findById(medicine3Inventory2.getConsecutive()).get().setMedicine(medicine3);
         
 	}
 	
@@ -225,8 +239,6 @@ public class AttentionServiceImp implements AttentionService {
 //			deliverMedicine(emergencyAttention.getMedicinesSupplied().get(i));
 //		}
 		attentionRepository.save(emergencyAttention);
-		System.out.println(attentionRepository.findAll());
-		System.out.println(supplyRepository.findAll());
 	}
 	
 	public State[] getStates() {

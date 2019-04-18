@@ -41,7 +41,8 @@
 					<input type="text" id="pathology" name="pathology" th:field="*{pathology}">
 					<span th:if="${#fields.hasErrors('pathology')}" th:errors="*{pathology}"></span>
 					<br><br>
-					<input type="submit" name="action" id="submitButton" th:value="Save"> 
+					<input type="submit" name="action" id="submitButton" th:value="Save">
+					<input type="submit" name="action" value="Cancel">
 				</fieldset>
 			</form>
 		</div>
