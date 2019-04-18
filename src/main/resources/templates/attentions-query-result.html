@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Attentions</title>
+</head>
+<body>
+	<div>
+		<h2>Attentions by date</h2>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Consecutive</th>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Patient</th>
+						<th>General description</th>
+						<th>Procedure performed</th>
+						<th>Forwarded</th>
+						<th>Forwarded place</th>
+						<th>Observations</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${attentions.empty}">
+						<td colspan="2">There is no attentions that match the date</td>
+					</tr>
+					<tr th:each="attention : ${attentions}">
+						<td><span th:text="${attention.consecutive}"> Consecutive </span></td>
+						<td><span th:text="${attention.date}"> Date </span></td>
+						<td><span th:text="${attention.time}"> Time </span></td>
+						<td><span th:text="${attention.patient.name}"> Patient </span></td>
+						<td><span th:text="${attention.generalDescription}"> General description </span></td>
+						<td><span th:text="${attention.procedurePerformed}"> Procedure performed </span></td>
+						<td><span th:text="${attention.forwarded}"> Forwarded </span></td>
+						<td><span th:text="${attention.forwardedPlace}"> Forwarded place </span></td>
+						<td><span th:text="${attention.observations}"> Observations </span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

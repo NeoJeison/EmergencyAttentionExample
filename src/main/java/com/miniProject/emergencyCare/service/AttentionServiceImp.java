@@ -258,6 +258,16 @@ public class AttentionServiceImp implements AttentionService {
 	}
 	
 	@Override
+	public List<EmergencyAttention> findAttentionsByDate(LocalDate date){
+		return attentionRepository.findByDate(date);
+	}
+	
+	@Override
+	public List<Supply> findSuppliesByDate(LocalDate date){
+		return supplyRepository.findByDate(date);
+	}
+	
+	@Override
 	public Supply getSupplyById(Long id) {
 		return supplyRepository.findById(id).get();
 	}

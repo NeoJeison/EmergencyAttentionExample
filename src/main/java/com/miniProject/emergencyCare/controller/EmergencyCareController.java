@@ -1,8 +1,11 @@
 package com.miniProject.emergencyCare.controller;
 
+import java.time.LocalDate;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -119,6 +122,21 @@ public class EmergencyCareController {
 			}
 		}
 		return "index";
+	}
+	
+	@GetMapping("/query-options")
+	public String queryOptions() {
+		return "query-options";
+	}
+	
+	@GetMapping("/make-query")
+	public String makeQuery(@RequestParam(value="date") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate date, Model model, @RequestParam(value = "action", required = true) String action) {
+		if(action.equals("Query attentions")) {
+			model.addAttribute("attentions", attentionService.findAttentionsByDate(date));
+			return "attentions-query-result";
+		}
+		model.addAttribute("supplies", attentionService.findSuppliesByDate(date));
+		return "supplies-query-result";
 	}
 
 }

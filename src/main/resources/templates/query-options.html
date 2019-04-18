@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Querys</title>
+</head>
+<body>
+	<div>
+		<h2>Query options</h2>
+		<div>
+			<form method="get" th:action="@{/make-query}">
+				<label for="date">Date for query</label>
+				<input type="date" id="date" th:name="date" required>
+				<input type="submit" name="action" value="Query attentions"> 
+				<input type="submit" name="action" id="submitButton" value="Query supplies">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

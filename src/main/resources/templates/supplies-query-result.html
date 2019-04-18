@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Supplies</title>
+</head>
+<body>
+	<div>
+		<h2>Supplies by date</h2>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>Consecutive</th>
+						<th>Medicine</th>
+						<th>Amount</th>
+						<th>Patient</th>
+						<th>Date</th>
+						<th>Time</th>
+						<th>Observation</th>
+						<th>Pathology</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${supplies.empty}">
+						<td colspan="2">There is no supplies that match the date</td>
+					</tr>
+					<tr th:each="supply : ${supplies}">
+						<td><span th:text="${supply.consecutive}"> Consecutive
+						</span></td>
+						<td><span th:text="${supply.medicine.name}"> Medicine
+						</span></td>
+						<td><span th:text="${supply.amount}"> Amount </span></td>
+						<td><span th:text="${supply.patient.name}"> Patient </span></td>
+						<td><span th:text="${supply.date}"> Date </span></td>
+						<td><span th:text="${supply.time}"> Time </span></td>
+						<td><span th:text="${supply.observation}"> Observation
+						</span></td>
+						<td><span th:text="${supply.pathology}"> Pathology </span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
