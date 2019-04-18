@@ -3,6 +3,7 @@ package com.miniProject.emergencyCare.controller;
 import java.time.LocalDate;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -130,13 +131,15 @@ public class EmergencyCareController {
 	}
 	
 	@GetMapping("/make-query")
-	public String makeQuery(@RequestParam(value="date") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate date, Model model, @RequestParam(value = "action", required = true) String action) {
+	public String makeQuery(@RequestParam(value="date") @DateTimeFormat(pattern = "yyyy-MM-dd") @NotNull LocalDate date, Model model, @RequestParam(value = "action", required = true) String action) {
 		if(action.equals("Query attentions")) {
 			model.addAttribute("attentions", attentionService.findAttentionsByDate(date));
 			return "attentions-query-result";
+		}else if(!action.equals("Cancel")) {
+			model.addAttribute("supplies", attentionService.findSuppliesByDate(date));
+			return "supplies-query-result";			
 		}
-		model.addAttribute("supplies", attentionService.findSuppliesByDate(date));
-		return "supplies-query-result";
+		return "index";
 	}
 
 }
